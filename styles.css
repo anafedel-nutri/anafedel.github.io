@@ -41,17 +41,13 @@ body {
 
 /* ─── NAV ─── */
 nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
+  position: relative;
+  z-index: 10;
   padding: 20px 48px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(250, 248, 245, 0.92);
-  backdrop-filter: blur(12px);
+  background: var(--cream);
   border-bottom: 1px solid var(--border);
   transition: all 0.4s ease;
 }
@@ -61,38 +57,42 @@ nav.scrolled {
 }
 
 .nav-logo img {
-  height: 64px;
+  height: 192px;
   transition: height 0.4s ease;
 }
 
 nav.scrolled .nav-logo img {
-  height: 48px;
+  height: 144px;
 }
 
 /* ─── HERO ─── */
 .hero {
   min-height: 100vh;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  padding-top: 110px;
-  overflow: hidden;
+  grid-template-columns: minmax(0, 0.55fr) minmax(0, 1fr);
+  align-items: start;
+  padding-top: 0;
+  overflow-x: hidden;
+  /* 25% de espaço horizontal total (12,5% cada lado) — conteúdo mais centralizado */
+  margin-left: 12.5%;
+  margin-right: 12.5%;
 }
 
 .hero-left {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 80px 60px 80px 80px;
+  justify-content: flex-start;
+  padding: 0 80px 80px 60px;
   position: relative;
 }
 
 .hero-left::before {
   content: '';
   position: absolute;
-  top: 20%;
-  right: 0;
+  top: 0;
+  left: 0;
   width: 1px;
-  height: 60%;
+  height: min(70%, 420px);
   background: linear-gradient(to bottom, transparent, var(--border), transparent);
 }
 
@@ -119,31 +119,46 @@ nav.scrolled .nav-logo img {
   color: var(--brown);
 }
 
+.hero-cta-block {
+  max-width: 440px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 44px;
+}
+
+.hero-cta-block .hero-subtitle {
+  width: 100%;
+  margin-bottom: 0;
+  text-align: left;
+}
+
 .hero-subtitle {
   font-size: 1rem;
   color: var(--text-mid);
-  max-width: 440px;
-  margin-bottom: 44px;
   line-height: 1.8;
 }
 
 .hero-right {
   position: relative;
   background: var(--section-alt);
-  overflow: hidden;
 }
 
-.hero-right img {
+/* Foto principal: escala só pela largura, sem cortar topo/fundo */
+.hero-right > img:not(.hero-img-overlay) {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  display: block;
+  object-fit: unset;
   object-position: top center;
 }
 
 .hero-img-overlay {
   position: absolute;
   bottom: 40px;
-  left: -30px;
+  right: -30px;
+  left: auto;
   width: 140px;
   border: 4px solid var(--cream);
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
@@ -184,6 +199,16 @@ nav.scrolled .nav-logo img {
   z-index: 1;
 }
 
+.btn-hero {
+  align-self: center;
+  width: fit-content;
+  max-width: min(calc(440px - 3rem), 100%);
+  padding: 10px 22px;
+  font-size: 10.5px;
+  letter-spacing: 0.11em;
+  border-radius: 8px;
+}
+
 .btn-outline {
   display: inline-block;
   border: 1px solid currentColor;
@@ -216,10 +241,27 @@ nav.scrolled .nav-logo img {
   text-transform: uppercase;
   text-decoration: none;
   transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
 }
 
-.btn-light:hover {
+.btn-light::after {
+  content: '';
+  position: absolute;
+  inset: 0;
   background: var(--accent-light);
+  transform: translateX(-100%);
+  transition: transform 0.4s ease;
+}
+
+.btn-light:hover::after {
+  transform: translateX(0);
+}
+
+.btn-light span {
+  position: relative;
+  z-index: 1;
 }
 
 /* ─── REVEAL ANIMATION ─── */
@@ -635,7 +677,7 @@ footer {
 }
 
 footer img {
-  height: 50px;
+  height: 150px;
   filter: brightness(0) invert(1);
   opacity: 0.8;
   margin-bottom: 16px;
@@ -694,14 +736,20 @@ footer p {
   .hero {
     grid-template-columns: 1fr;
     min-height: auto;
+    margin-left: 0;
+    margin-right: 0;
   }
 
   .hero-right {
-    height: 60vw;
+    height: auto;
   }
 
   .hero-left {
-    padding: 80px 24px 60px;
+    padding: 28px 24px 60px;
+  }
+
+  .hero-left::before {
+    display: none;
   }
 
   .section {
