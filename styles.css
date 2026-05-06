@@ -148,7 +148,6 @@ body.is-page-loading {
   align-items: center;
   justify-content: center;
   background: var(--cream);
-  border-bottom: 1px solid var(--border);
   transition: padding 0.4s ease;
 }
 
@@ -176,11 +175,11 @@ body.is-page-loading {
 
 /* ─── HERO ─── */
 .hero {
-  min-height: 100vh;
   display: grid;
   grid-template-columns: minmax(0, 0.55fr) minmax(0, 1fr);
   align-items: start;
   padding-top: 0;
+  padding-bottom: 88px;
   overflow-x: hidden;
   /* 25% de espaço horizontal total (12,5% cada lado) — conteúdo mais centralizado */
   margin-left: 12.5%;
@@ -191,7 +190,7 @@ body.is-page-loading {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding: 0 80px 80px 60px;
+  padding: 0 80px 48px 60px;
   position: relative;
 }
 
@@ -398,7 +397,11 @@ body.is-page-loading {
 
 /* ─── SECTION BASE ─── */
 .section {
-  padding: 100px 80px;
+  padding: 88px 80px;
+}
+
+#processo.section {
+  padding-top: 56px;
 }
 
 .section-alt {
@@ -420,7 +423,7 @@ body.is-page-loading {
   text-transform: uppercase;
   color: var(--accent);
   font-weight: 500;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   display: block;
 }
 
@@ -430,7 +433,7 @@ body.is-page-loading {
   font-weight: 400;
   line-height: 1.25;
   color: var(--text-dark);
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .section-alt .section-title,
@@ -453,8 +456,8 @@ body.is-page-loading {
 .how-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 48px;
-  margin-top: 64px;
+  gap: 36px;
+  margin-top: 52px;
 }
 
 .how-card {
@@ -495,7 +498,7 @@ body.is-page-loading {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0;
-  margin-top: 60px;
+  margin-top: 48px;
 }
 
 .for-whom-item {
@@ -530,7 +533,7 @@ body.is-page-loading {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 32px;
-  margin-top: 60px;
+  margin-top: 48px;
   max-width: 900px;
   margin-left: auto;
   margin-right: auto;
@@ -626,7 +629,7 @@ body.is-page-loading {
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  gap: 64px;
   align-items: start;
 }
 
@@ -670,7 +673,7 @@ body.is-page-loading {
 .philosophy-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 60px;
+  gap: 48px;
   align-items: start;
 }
 
@@ -698,6 +701,10 @@ body.is-page-loading {
   font-size: 0.9rem;
   color: var(--text-mid);
   line-height: 1.8;
+}
+
+.philosophy-item:nth-child(2) p {
+  margin-top: 26px;
 }
 
 .philosophy-imgs {
@@ -755,7 +762,7 @@ body.is-page-loading {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 14px;
-  margin-top: 60px;
+  margin-top: 48px;
 }
 
 .faq-item {

@@ -6,7 +6,8 @@
   <meta name="theme-color" content="#6b5744" />
   <title>Ana Fedel | Nutricionista — Saúde da mulher e emagrecimento em Campinas</title>
   <meta name="description" content="Consultoria com Ana Fedel, nutricionista em Campinas (SP): emagrecimento sustentável, saúde hormonal (TPM, SOP, menopausa), exames e acompanhamento online ou presencial. Agende sua consulta." />
-  <meta name="robots" content="index, follow" />
+  <meta name="robots" content="index, follow, noimageindex" />
+  <meta name="googlebot" content="index, follow, noimageindex" />
   <link rel="canonical" href="https://www.anafedel.com/" />
 
   <!-- Open Graph -->
@@ -255,7 +256,6 @@
         </div>
         <div class="philosophy-imgs reveal">
           <img src="./img/332931e550b385151db470b188934384830fd4c666ea32d3613811e0c0b66c36.webp" alt="Alimentação equilibrada e ingredientes frescos" loading="lazy" decoding="async" />
-          <img src="./img/5ce36895a4db94f3872a9e3bcc3b7bb875db22336a79b3413cfc20a83f5772f3.webp" alt="Hábitos saudáveis e bem-estar no dia a dia" loading="lazy" decoding="async" />
         </div>
       </div>
     </section>
@@ -356,6 +356,38 @@
         );
       }
 
+      function initImageProtection() {
+        const images = document.querySelectorAll('img');
+        images.forEach((img) => {
+          img.setAttribute('draggable', 'false');
+          img.setAttribute('oncontextmenu', 'return false');
+          img.style.webkitUserDrag = 'none';
+          img.style.userSelect = 'none';
+        });
+
+        document.addEventListener('contextmenu', (event) => {
+          if (event.target.closest('img')) event.preventDefault();
+        });
+
+        document.addEventListener('dragstart', (event) => {
+          if (event.target.closest('img')) event.preventDefault();
+        });
+
+        document.addEventListener('copy', (event) => {
+          if (event.target.closest('img')) event.preventDefault();
+        });
+
+        document.addEventListener('keydown', (event) => {
+          const key = event.key.toLowerCase();
+          const ctrlOrCmd = event.ctrlKey || event.metaKey;
+          const blockedCombo =
+            (ctrlOrCmd && (key === 's' || key === 'u' || key === 'p' || key === 'c')) ||
+            key === 'printscreen' ||
+            key === 'f12';
+          if (blockedCombo) event.preventDefault();
+        });
+      }
+
       function initRevealAnimations() {
         const reveals = document.querySelectorAll('.reveal');
         const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -394,6 +426,7 @@
           loader.setAttribute('aria-busy', 'false');
           loader.setAttribute('aria-hidden', 'true');
           document.body.classList.remove('is-page-loading');
+          initImageProtection();
           initRevealAnimations();
         });
     })();
