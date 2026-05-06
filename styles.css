@@ -174,16 +174,6 @@ body.is-page-loading {
   height: 144px;
 }
 
-.nav-cta {
-  position: absolute;
-  right: 48px;
-  top: 50%;
-  transform: translateY(-50%);
-  padding: 10px 20px;
-  font-size: 10px;
-  letter-spacing: 0.12em;
-}
-
 /* ─── HERO ─── */
 .hero {
   display: grid;
@@ -381,6 +371,114 @@ body.is-page-loading {
 .btn-light span {
   position: relative;
   z-index: 1;
+}
+
+/* Google Calendar scheduling — botão injetado (.qxCTlb) com visual dos CTAs do site */
+.gcal-schedule-host {
+  position: relative;
+  display: inline-block;
+  line-height: 0;
+}
+
+.gcal-schedule-marker {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+
+.gcal-schedule-host .qxCTlb {
+  min-height: unset !important;
+  line-height: 1.35 !important;
+  white-space: normal !important;
+  word-break: normal !important;
+  text-transform: uppercase;
+  font-family: 'Jost', sans-serif !important;
+  font-weight: 500 !important;
+  transition: all 0.3s ease;
+  border-width: 0;
+  cursor: pointer;
+}
+
+/* Primário + hero */
+.gcal-schedule-host--primary.gcal-schedule-host--hero {
+  align-self: center;
+  width: fit-content;
+  max-width: min(calc(440px - 3rem), 100%);
+}
+
+.gcal-schedule-host--primary.gcal-schedule-host--hero .qxCTlb {
+  padding: 10px 22px !important;
+  font-size: 10.5px !important;
+  letter-spacing: 0.11em !important;
+  border-radius: var(--radius-sm) !important;
+  background: var(--brown) !important;
+  color: #fff !important;
+}
+
+/* Primário (sobre) */
+.gcal-schedule-host--primary:not(.gcal-schedule-host--hero) .qxCTlb {
+  padding: 15px 36px !important;
+  font-size: 12px !important;
+  letter-spacing: 0.15em !important;
+  background: var(--brown) !important;
+  color: #fff !important;
+}
+
+.gcal-schedule-host.about-cta {
+  margin-top: 12px;
+}
+
+.gcal-schedule-host--primary .qxCTlb:hover {
+  filter: brightness(1.06);
+}
+
+/* Contorno (planos) */
+.gcal-schedule-host--outline .qxCTlb {
+  padding: 12px 28px !important;
+  font-size: 11px !important;
+  letter-spacing: 0.15em !important;
+  background: transparent !important;
+  color: var(--brown) !important;
+  border: 1px solid currentColor !important;
+  border-radius: 0 !important;
+}
+
+.gcal-schedule-host--outline .qxCTlb:hover {
+  background: var(--brown) !important;
+  color: #fff !important;
+  border-color: var(--brown) !important;
+}
+
+.plan-card .gcal-schedule-host--outline {
+  margin-top: auto;
+}
+
+.plan-card.featured .gcal-schedule-host--outline .qxCTlb {
+  color: #fff !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.plan-card.featured .gcal-schedule-host--outline .qxCTlb:hover {
+  background: #fff !important;
+  color: var(--brown) !important;
+  border-color: #fff !important;
+}
+
+/* CTA claro */
+.gcal-schedule-host--light .qxCTlb {
+  padding: 16px 40px !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.15em !important;
+  border-radius: var(--radius-sm) !important;
+  background: #fff !important;
+  color: var(--brown) !important;
+}
+
+.gcal-schedule-host--light .qxCTlb:hover {
+  filter: brightness(0.96);
 }
 
 /* ─── REVEAL ANIMATION ─── */
@@ -954,13 +1052,6 @@ body.is-page-loading {
     padding: 16px 24px;
   }
 
-  .nav-cta {
-    right: 24px;
-    padding: 8px 14px;
-    font-size: 9px;
-    letter-spacing: 0.1em;
-  }
-
   .hero {
     grid-template-columns: 1fr;
     min-height: auto;
@@ -1002,14 +1093,17 @@ body.is-page-loading {
     gap: 12px;
   }
 
-  .about-cta {
+  .about-text .gcal-schedule-host.about-cta {
     display: block;
     width: fit-content;
     margin: 20px auto 0;
-    padding: 10px 22px;
-    font-size: 10.5px;
-    letter-spacing: 0.11em;
-    border-radius: 8px;
+  }
+
+  .about-text .gcal-schedule-host.about-cta .qxCTlb {
+    padding: 10px 22px !important;
+    font-size: 10.5px !important;
+    letter-spacing: 0.11em !important;
+    border-radius: 8px !important;
   }
 
   .site-footer {

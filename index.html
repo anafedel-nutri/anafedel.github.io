@@ -30,6 +30,29 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <!-- Google Calendar Appointment Scheduling -->
+  <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet" />
+  <script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
+  <style>
+    /* Modal do agendamento: telas grandes — largura 60vw; altura preenche o overlay (sem limite 60%). */
+    @media (min-width: 1024px) {
+      .hur54b {
+        display: flex !important;
+        align-items: stretch !important;
+        justify-content: center !important;
+        padding: 40px !important;
+        box-sizing: border-box !important;
+      }
+      .hur54b .mmGMM {
+        width: 60vw !important;
+        max-width: 60vw !important;
+        height: auto !important;
+        max-height: none !important;
+        align-self: stretch !important;
+        flex-shrink: 0 !important;
+      }
+    }
+  </style>
   <link rel="preload" as="image" href="./img/hero-ana-fedel-1600.jpg" fetchpriority="high" />
 
   <script type="application/ld+json">
@@ -115,7 +138,6 @@
       <a href="#inicio" class="nav-logo" aria-label="Ana Fedel Nutricionista — início">
         <img src="./img/7715302e1fe6f8433b092a4ad29cd22cd592c8ccffeed73be338f0a362011b4d.webp" width="300" height="120" alt="" decoding="async" />
       </a>
-      <a href="https://dietbox.me/pt-BR/anafedel" class="nav-cta btn-outline">Agendar</a>
     </nav>
   </header>
 
@@ -135,7 +157,7 @@
           <p class="hero-subtitle">
             Atendimento nutricional personalizado para mulheres que desejam emagrecer, melhorar sintomas e cuidar da saúde hormonal com clareza e acompanhamento.
           </p>
-          <a href="https://dietbox.me/pt-BR/anafedel" class="btn-primary btn-hero"><span>Agende agora</span></a>
+          <div class="gcal-schedule-host gcal-schedule-host--primary gcal-schedule-host--hero" data-gcal-label="Agende agora"></div>
         </div>
       </div>
     </section>
@@ -204,7 +226,7 @@
             <li>Acesso ao aplicativo e materiais exclusivos</li>
             <li>Retorno em até 30 dias</li>
           </ul>
-          <a href="https://dietbox.me/pt-BR/anafedel" class="btn-outline">Agendar</a>
+          <div class="gcal-schedule-host gcal-schedule-host--outline" data-gcal-label="Agendar"></div>
         </div>
         <div class="plan-card featured reveal">
           <div class="plan-name">Plano Transformar</div>
@@ -216,7 +238,7 @@
             <li>Plano alimentar atualizado conforme evolução</li>
             <li>Acesso ilimitado ao aplicativo e materiais exclusivos</li>
           </ul>
-          <a href="https://dietbox.me/pt-BR/anafedel" class="btn-outline">Agendar</a>
+          <div class="gcal-schedule-host gcal-schedule-host--outline" data-gcal-label="Agendar"></div>
         </div>
       </div>
     </section>
@@ -237,7 +259,7 @@
           <p>
             Aqui, a nutrição não é sobre restrição, culpa ou dietas prontas. É sobre entender o que o seu corpo está tentando comunicar e construir um plano possível, inteligente e sustentável.
           </p>
-          <a href="https://dietbox.me/pt-BR/anafedel" class="btn-primary about-cta"><span>Agende sua consulta</span></a>
+          <div class="gcal-schedule-host gcal-schedule-host--primary about-cta" data-gcal-label="Agende sua consulta"></div>
         </div>
       </div>
     </section>
@@ -266,7 +288,7 @@
     <section class="cta-section" aria-labelledby="titulo-cta">
       <h2 id="titulo-cta" class="reveal">Pronta para cuidar do seu corpo<br>com mais consciência?</h2>
       <p class="reveal">Agende sua consulta e receba um acompanhamento pensado para você, sua rotina e seus objetivos.</p>
-      <a href="https://dietbox.me/pt-BR/anafedel" class="btn-light reveal"><span>Agende aqui</span></a>
+      <div class="gcal-schedule-host gcal-schedule-host--light reveal" data-gcal-label="Agende aqui"></div>
     </section>
 
     <!-- FAQ -->
@@ -318,7 +340,6 @@
       <p class="footer-col-title">Links</p>
       <a href="#inicio">Início</a>
       <a href="#planos">Planos</a>
-      <a href="https://dietbox.me/pt-BR/anafedel">Agendar</a>
       <a href="#sobre">Sobre</a>
       <a href="#faq">Perguntas frequentes</a>
     </div>
@@ -417,6 +438,36 @@
         reveals.forEach((el) => observer.observe(el));
       }
 
+      const GCAL_SCHEDULE_URL =
+        'https://calendar.google.com/calendar/appointments/schedules/AcZssZ3-HAUCw_YPbPsieuuFXQylLrMYv_SoqQChqPpZh21VNl5yqeEvb2kfE1ZKOsIa0m-bSG_uuSFC?gv=true';
+
+      function initGoogleSchedulingButtons() {
+        if (!window.calendar || !calendar.schedulingButton) return false;
+        document.querySelectorAll('.gcal-schedule-host').forEach((host) => {
+          if (host.dataset.gcalInitialized) return;
+          host.dataset.gcalInitialized = '1';
+          const marker = document.createElement('span');
+          marker.className = 'gcal-schedule-marker';
+          marker.setAttribute('aria-hidden', 'true');
+          host.appendChild(marker);
+          calendar.schedulingButton.load({
+            url: GCAL_SCHEDULE_URL,
+            color: '#d4956a',
+            label: host.getAttribute('data-gcal-label') || 'Agendar',
+            target: marker,
+          });
+        });
+        return true;
+      }
+
+      function ensureGoogleSchedulingButtons() {
+        if (initGoogleSchedulingButtons()) return;
+        let n = 0;
+        const id = setInterval(() => {
+          if (initGoogleSchedulingButtons() || ++n > 100) clearInterval(id);
+        }, 50);
+      }
+
       document.body.classList.add('is-page-loading');
 
       const t0 = performance.now();
@@ -438,6 +489,7 @@
           document.body.classList.remove('is-page-loading');
           initImageProtection();
           initRevealAnimations();
+          ensureGoogleSchedulingButtons();
         });
     })();
   </script>
