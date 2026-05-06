@@ -401,19 +401,41 @@ body.is-page-loading {
   cursor: pointer;
 }
 
-/* Primário + hero */
+/* Primário + hero — animação no wrapper (como .btn-primary); botão Google transparente por cima */
 .gcal-schedule-host--primary.gcal-schedule-host--hero {
   align-self: center;
   width: fit-content;
   max-width: min(calc(440px - 3rem), 100%);
+  position: relative;
+  overflow: hidden;
+  background: var(--brown);
+  border-radius: var(--radius-sm);
+}
+
+.gcal-schedule-host--primary.gcal-schedule-host--hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  transform: translateX(-100%);
+  transition: transform 0.4s ease;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.gcal-schedule-host--primary.gcal-schedule-host--hero:hover::after {
+  transform: translateX(0);
 }
 
 .gcal-schedule-host--primary.gcal-schedule-host--hero .qxCTlb {
+  position: relative;
+  z-index: 1;
   padding: 10px 22px !important;
   font-size: 10.5px !important;
   letter-spacing: 0.11em !important;
-  border-radius: var(--radius-sm) !important;
-  background: var(--brown) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
   color: #fff !important;
 }
 
@@ -430,7 +452,7 @@ body.is-page-loading {
   margin-top: 12px;
 }
 
-.gcal-schedule-host--primary .qxCTlb:hover {
+.gcal-schedule-host--primary:not(.gcal-schedule-host--hero) .qxCTlb:hover {
   filter: brightness(1.06);
 }
 
@@ -501,6 +523,15 @@ body.is-page-loading {
 
   .reveal.visible {
     transform: translateY(0);
+  }
+
+  .gcal-schedule-host--primary.gcal-schedule-host--hero::after {
+    transition: none;
+    transform: translateX(-100%);
+  }
+
+  .gcal-schedule-host--primary.gcal-schedule-host--hero:hover::after {
+    transform: translateX(-100%);
   }
 }
 

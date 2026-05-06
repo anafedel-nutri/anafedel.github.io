@@ -34,6 +34,37 @@
   <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet" />
   <script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
   <style>
+    /* Modal do agendamento — telas pequenas: iframe em tela cheia; só faixa superior para o Fechar. */
+    @media (max-width: 1023px) {
+      .hur54b {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
+        justify-content: flex-start !important;
+        padding: 0 !important;
+        padding-top: calc(env(safe-area-inset-top, 0px) + 52px) !important;
+        padding-bottom: env(safe-area-inset-bottom, 0px) !important;
+        box-sizing: border-box !important;
+        height: 100vh !important;
+        height: 100dvh !important;
+        min-height: 100vh !important;
+        min-height: 100dvh !important;
+      }
+      .hur54b .mmGMM {
+        width: 100% !important;
+        max-width: none !important;
+        flex: 1 1 auto !important;
+        min-height: 0 !important;
+        height: auto !important;
+        max-height: none !important;
+        border-radius: 0 !important;
+        align-self: stretch !important;
+      }
+      .hur54b .Xfsokf {
+        top: calc(env(safe-area-inset-top, 0px) + 10px) !important;
+        right: max(12px, env(safe-area-inset-right, 0px)) !important;
+      }
+    }
     /* Modal do agendamento: telas grandes — largura 60vw; altura preenche o overlay (sem limite 60%). */
     @media (min-width: 1024px) {
       .hur54b {
