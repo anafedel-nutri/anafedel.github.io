@@ -706,7 +706,6 @@ body.is-page-loading {
   position: relative;
   display: flex;
   flex-direction: column;
-  text-align: left;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
