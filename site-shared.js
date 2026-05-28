@@ -165,8 +165,127 @@
       .catch(() => {});
   }
 
+  let testimonialCarouselReady = false;
+
+  function initTestimonialCarousel() {
+    if (testimonialCarouselReady) return;
+    const root = document.querySelector('[data-testimonial-carousel]');
+    if (!root) return;
+    testimonialCarouselReady = true;
+
+    const track = root.querySelector('.testimonial-carousel__track');
+    const cards = [...root.querySelectorAll('.testimonial-card')];
+    const prevBtn = root.querySelector('[data-carousel-prev]');
+    const nextBtn = root.querySelector('[data-carousel-next]');
+    const dotsHost = root.querySelector('.testimonial-carousel__dots');
+    if (!track || !cards.length || !prevBtn || !nextBtn || !dotsHost) return;
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let index = 0;
+
+    cards.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'testimonial-carousel__dot';
+      dot.setAttribute('role', 'tab');
+      dot.setAttribute('aria-label', 'Depoimento ' + (i + 1) + ' de ' + cards.length);
+      dot.addEventListener('click', () => goTo(i));
+      dotsHost.appendChild(dot);
+    });
+
+    const dots = [...dotsHost.querySelectorAll('.testimonial-carousel__dot')];
+
+    function getIndexFromScroll() {
+      const x = track.scrollLeft;
+      let closest = 0;
+      let min = Infinity;
+      cards.forEach((card, i) => {
+        const dist = Math.abs(card.offsetLeft - x);
+        if (dist < min) {
+          min = dist;
+          closest = i;
+        }
+      });
+      return closest;
+    }
+
+    function updateUI() {
+      dots.forEach((dot, i) => {
+        const active = i === index;
+        dot.classList.toggle('is-active', active);
+        dot.setAttribute('aria-selected', active ? 'true' : 'false');
+      });
+      prevBtn.disabled = index <= 0;
+      nextBtn.disabled = index >= cards.length - 1;
+    }
+
+    function goTo(i) {
+      index = Math.max(0, Math.min(cards.length - 1, i));
+      cards[index].scrollIntoView({
+        behavior: reduceMotion ? 'auto' : 'smooth',
+        inline: 'start',
+        block: 'nearest',
+      });
+      updateUI();
+    }
+
+    prevBtn.addEventListener('click', () => goTo(index - 1));
+    nextBtn.addEventListener('click', () => goTo(index + 1));
+
+    track.addEventListener(
+      'scroll',
+      () => {
+        const next = getIndexFromScroll();
+        if (next !== index) {
+          index = next;
+          updateUI();
+        }
+      },
+      { passive: true }
+    );
+
+    root.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        goTo(index - 1);
+      } else if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        goTo(index + 1);
+      }
+    });
+
+    let dragActive = false;
+    let dragStartX = 0;
+    let dragScrollLeft = 0;
+
+    track.addEventListener('mousedown', (event) => {
+      if (event.button !== 0) return;
+      dragActive = true;
+      dragStartX = event.pageX;
+      dragScrollLeft = track.scrollLeft;
+      track.classList.add('is-dragging');
+    });
+
+    window.addEventListener('mousemove', (event) => {
+      if (!dragActive) return;
+      event.preventDefault();
+      track.scrollLeft = dragScrollLeft - (event.pageX - dragStartX);
+    });
+
+    window.addEventListener('mouseup', () => {
+      if (!dragActive) return;
+      dragActive = false;
+      track.classList.remove('is-dragging');
+      index = getIndexFromScroll();
+      updateUI();
+    });
+
+    updateUI();
+  }
+
   function onPageReady() {
     ensureGoogleSchedulingButtons();
+    initTestimonialCarousel();
   }
 
   document.addEventListener('page-ready', onPageReady);
