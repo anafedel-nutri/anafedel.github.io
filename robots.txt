@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /img/
 
 Sitemap: https://www.anafedel.com/sitemap.xml

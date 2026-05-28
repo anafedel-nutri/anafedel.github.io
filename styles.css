@@ -758,6 +758,22 @@ body.is-page-loading {
   margin-bottom: 10px;
 }
 
+.for-whom-link {
+  display: inline-block;
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--bordeaux);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.for-whom-link:hover {
+  color: var(--bordeaux-dark, #5A2F38);
+  border-bottom-color: currentColor;
+}
+
 .for-whom-item p {
   font-size: 0.9rem;
   color: var(--text-body);
@@ -1577,6 +1593,26 @@ body.is-page-loading {
 
 .seo-footer .footer-seo-line {
   margin-bottom: 16px;
+}
+
+.seo-footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 16px;
+  margin: 0 0 20px;
+  font-size: 0.88rem;
+}
+
+.seo-footer-nav a {
+  color: var(--bordeaux);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.seo-footer-nav a:hover {
+  border-bottom-color: currentColor;
 }
 
 .links-page {

@@ -3,28 +3,32 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://www.googletagmanager.com" />
+  <script src="analytics.js" async></script>
   <meta name="theme-color" content="#6E3B46" />
   <meta name="color-scheme" content="light" />
-  <title>Nutricionista em Campinas | Emagrecimento Feminino e Saúde Hormonal | Ana Fedel Nutricionista</title>
+  <title>Emagrecimento Feminino em Campinas | Ana Fedel CRN 91723</title>
   <meta name="description" content="Nutricionista em Campinas e online para mulheres. Emagrecimento, saúde hormonal e acompanhamento nutricional personalizado com estratégia e leveza." />
-  <meta name="robots" content="index, follow, noimageindex" />
-  <meta name="googlebot" content="index, follow, noimageindex" />
+  <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://www.anafedel.com/" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="pt_BR" />
   <meta property="og:url" content="https://www.anafedel.com/" />
-  <meta property="og:title" content="Nutricionista em Campinas | Emagrecimento Feminino — Ana Fedel" />
+  <meta property="og:title" content="Emagrecimento Feminino em Campinas | Ana Fedel CRN 91723" />
+  <meta property="og:image:width" content="1600" />
+  <meta property="og:image:height" content="2133" />
   <meta property="og:description" content="Atendimento nutricional para mulheres: emagrecimento, saúde hormonal e acompanhamento com estratégia e leveza. Campinas e online." />
-  <meta property="og:image" content="https://www.anafedel.com/img/logo.png" />
-  <meta property="og:image:alt" content="Logotipo Ana Fedel Nutricionista" />
+  <meta property="og:image" content="https://www.anafedel.com/img/hero-ana-fedel-1600.jpg" />
+  <meta property="og:image:alt" content="Ana Fedel, nutricionista em Campinas" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Ana Fedel | Nutricionista em Campinas" />
   <meta name="twitter:description" content="Emagrecimento feminino, saúde hormonal e acompanhamento nutricional em Campinas e online." />
-  <meta name="twitter:image" content="https://www.anafedel.com/img/logo.png" />
+  <meta name="twitter:image" content="https://www.anafedel.com/img/hero-ana-fedel-1600.jpg" />
+  <link rel="icon" href="./img/logo-s.svg" type="image/svg+xml" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -253,7 +257,7 @@
   <header>
     <nav id="navbar" class="site-nav" aria-label="Navegação principal">
       <a href="#inicio" class="nav-logo" aria-label="Ana Fedel Nutricionista — início">
-        <img src="./img/logo.svg"  alt="" decoding="async" />
+        <img src="./img/logo.svg" alt="" width="120" height="40" decoding="async" aria-hidden="true" />
       </a>
       <div class="nav-links">
         <a href="#planos">Planos</a>
@@ -306,18 +310,22 @@
         <div class="for-whom-item reveal">
           <h3 class="for-whom-heading">Saúde da mulher e equilíbrio hormonal</h3>
           <p>TPM, SOP, menopausa e sintomas hormonais.</p>
+          <a class="for-whom-link" href="saude-hormonal-feminina.html">Saúde hormonal feminina</a>
         </div>
         <div class="for-whom-item reveal">
           <h3 class="for-whom-heading">Emagrecimento e gestão metabólica</h3>
           <p>Perda de peso com estratégia, sem terrorismo nutricional.</p>
+          <a class="for-whom-link" href="emagrecimento-feminino.html">Emagrecimento feminino</a>
         </div>
         <div class="for-whom-item reveal">
           <h3 class="for-whom-heading">Saúde digestiva e imunidade</h3>
           <p>Inchaço, intestino irregular e desconfortos digestivos.</p>
+          <a class="for-whom-link" href="reeducacao-alimentar.html">Reeducação alimentar</a>
         </div>
         <div class="for-whom-item reveal">
           <h3 class="for-whom-heading">Longevidade e vitalidade</h3>
           <p>Preservação de massa muscular, energia e autonomia ao longo dos anos.</p>
+          <a class="for-whom-link" href="reeducacao-alimentar.html">Hábitos sustentáveis</a>
         </div>
       </div>
     </section>
@@ -342,7 +350,7 @@
         <div class="how-card reveal">
           <div class="how-card-num" aria-hidden="true">03</div>
           <h3>Acompanhamento contínuo</h3>
-          <p>Você recebe suporte para ajustes, evolução e constância ao longo de todo o processo. Incluindo bioimpedância.</p>
+          <p>Você recebe suporte para ajustes, evolução e constância ao longo de todo o processo — incluindo <a href="bioimpedancia-campinas.html">bioimpedância em Campinas</a> no presencial.</p>
         </div>
       </div>
     </section>
@@ -579,6 +587,9 @@
       <a href="#faq">Perguntas frequentes</a>
       <a href="nutricionista-em-campinas.html">Nutricionista em Campinas</a>
       <a href="emagrecimento-feminino.html">Emagrecimento feminino</a>
+      <a href="saude-hormonal-feminina.html">Saúde hormonal feminina</a>
+      <a href="reeducacao-alimentar.html">Reeducação alimentar</a>
+      <a href="bioimpedancia-campinas.html">Bioimpedância Campinas</a>
       <a href="consulta-online.html">Consulta online</a>
       <a href="links.html">Links (Instagram)</a>
     </div>
@@ -617,11 +628,12 @@
       });
 
       const loader = document.getElementById('page-loader');
-      const LOADER_MIN_MS = 480;
+      const LOADER_MIN_MS = 0;
 
       function waitForImages() {
         return Promise.all(
           [...document.querySelectorAll('img[src]')].map((img) => {
+            if (img.closest('.hero')) return Promise.resolve();
             if (img.loading === 'lazy') return Promise.resolve();
             if (img.complete && img.naturalHeight > 0) return Promise.resolve();
             return new Promise((resolve) => {

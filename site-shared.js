@@ -5,6 +5,14 @@
     transformar: 'Olá, Ana! Tenho interesse no Plano Transformar de 3 meses. Pode me passar mais informações?',
   };
 
+  function track(eventName, params) {
+    if (typeof window.trackEvent === 'function') {
+      window.trackEvent(eventName, params);
+    } else if (typeof window.gtag === 'function') {
+      window.gtag('event', eventName, params || {});
+    }
+  }
+
   document.querySelectorAll('[data-wa]').forEach((el) => {
     const key = el.getAttribute('data-wa') || 'general';
     const text = WA_MSG[key] || WA_MSG.general;
@@ -13,7 +21,29 @@
       el.setAttribute('target', '_blank');
       el.setAttribute('rel', 'noopener noreferrer');
     }
+    el.addEventListener('click', () => {
+      track('click_whatsapp', { wa_type: key });
+    });
   });
+
+  document.querySelectorAll('a[href*="wa.me"]').forEach((el) => {
+    if (el.hasAttribute('data-wa')) return;
+    el.addEventListener('click', () => {
+      track('click_whatsapp', { wa_type: 'footer' });
+    });
+  });
+
+  document.addEventListener(
+    'click',
+    (event) => {
+      const host = event.target.closest('.gcal-schedule-host');
+      if (!host) return;
+      track('click_agendar', {
+        gcal_label: host.getAttribute('data-gcal-label') || 'Agendar',
+      });
+    },
+    true
+  );
 
   const navbar = document.getElementById('navbar');
   if (navbar) {

@@ -52,7 +52,7 @@ Elevar clareza, conversão e SEO **sem redesign**:
 | `site-shared.js` (WhatsApp + Calendar) | `site-shared.js` | Feito |
 | Páginas SEO: Campinas, emagrecimento, consulta online | `*.html` | Feito |
 | Página links (Instagram) | `links.html` | Feito |
-| Sitemap com URLs publicadas | `sitemap.xml` | Parcial (4 páginas + home) |
+| Sitemap com URLs publicadas | `sitemap.xml` | Feito (8 URLs) |
 
 ### Pendente / opcional
 
@@ -64,7 +64,7 @@ Elevar clareza, conversão e SEO **sem redesign**:
 | Depoimentos reais autorizados | 3 | Substituir placeholder |
 | Fotos profissionais novas (hero/sobre) | 3 | Quando disponíveis |
 | Hero WebP + `<picture>` | 1 | Performance |
-| GA4 com ID real | 3 | Snippet preparado |
+| GA4 com ID real (`G-F3643H20MW`) | 3 | Feito — `analytics.js` + eventos |
 | Lead magnet (PDF + formulário) | 3 | Link em `/links` desabilitado |
 | Mapa + endereço completo (NAP) | 2–3 | Se endereço for público |
 | Blog / conteúdo evergreen | 3 | Médio prazo |
@@ -139,10 +139,10 @@ Meta aspiracional: LCP &lt; 2,5s mobile, CLS &lt; 0,1.
 |---|---|---|
 | `nutricionista-em-campinas.html` | SEO local (prioridade) | Publicada |
 | `emagrecimento-feminino.html` | Serviço + conversão | Publicada |
-| `saude-hormonal-feminina.html` | SOP, menopausa, hormonal | Pendente |
+| `saude-hormonal-feminina.html` | SOP, menopausa, hormonal | Publicada |
 | `consulta-online.html` | Captação nacional | Publicada |
-| `reeducacao-alimentar.html` | Evergreen | Pendente |
-| `bioimpedancia-campinas.html` | Busca local | Pendente |
+| `reeducacao-alimentar.html` | Evergreen | Publicada |
+| `bioimpedancia-campinas.html` | Busca local | Publicada |
 
 **Padrão de cada página:** meta únicos, nav/footer alinhados ao site, ~600–900 palavras, H1 único, CTA Calendar + WhatsApp, breadcrumb, link “Voltar ao site”.
 
@@ -192,7 +192,7 @@ Se endereço completo for público:
 | 2–4 depoimentos autorizados | 1 → 3 | Pendente |
 | Fotos novas hero/sobre | 3 | Pendente |
 | PDF lead magnet | 3 | Pendente |
-| ID Google Analytics 4 | 3 | Pendente |
+| ID Google Analytics 4 | 3 | `G-F3643H20MW` — instalado |
 
 ---
 
