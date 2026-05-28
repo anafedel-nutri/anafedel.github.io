@@ -1716,6 +1716,85 @@ body.is-page-loading {
   margin-top: 8px;
 }
 
+.para-quem-list {
+  max-width: 640px;
+  margin: 28px auto 0;
+  padding: 0 24px;
+  list-style: none;
+  text-align: left;
+}
+
+.para-quem-list li {
+  position: relative;
+  padding: 12px 0 12px 28px;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--text-body);
+  border-bottom: 1px solid var(--border);
+}
+
+.para-quem-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 1.35em;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--bordeaux);
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.testimonial-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 28px 24px;
+  box-shadow: var(--shadow-soft);
+}
+
+.testimonial-text {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-mid);
+  font-style: italic;
+}
+
+.faq-highlight {
+  padding-bottom: 48px;
+}
+
+.faq-grid--highlight {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.faq-highlight-more {
+  margin-top: 24px;
+  font-size: 0.9rem;
+}
+
+.faq-highlight-more a {
+  color: var(--bordeaux);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.faq-highlight-more a:hover {
+  text-decoration: underline;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .plan-card:hover {
     transform: none;
