@@ -8,7 +8,7 @@
   <meta name="theme-color" content="#6E3B46" />
   <meta name="color-scheme" content="light" />
   <title>Emagrecimento Feminino em Campinas | Ana Fedel CRN-3 91723</title>
-  <meta name="description" content="Emagrecimento e nutrição clínica com plano na sua rotina. Atendimento em Campinas (Cambuí) ou online, sem dietas radicais. Ana Fedel, CRN-3 91723." />
+  <meta name="description" content="Emagrecimento e nutrição clínica com plano na sua rotina. Atendimento em Campinas ou online, sem dietas radicais. Ana Fedel, CRN-3 91723." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://www.anafedel.com/" />
 
@@ -105,7 +105,8 @@
       border-color: #5A2F38 !important;
     }
   </style>
-  <link rel="preload" as="image" href="./img/hero-ana-fedel-1600.jpg" fetchpriority="high" />
+  <link rel="preload" as="image" href="./img/hero-ana-fedel-1600-mobile.jpg" media="(max-width: 767px)" fetchpriority="high" />
+  <link rel="preload" as="image" href="./img/hero-ana-fedel-1600.jpg" media="(min-width: 768px)" fetchpriority="high" />
 
   <script type="application/ld+json">
   {
@@ -275,9 +276,11 @@
   <main id="conteudo">
     <!-- HERO -->
     <section id="inicio" class="hero" aria-labelledby="hero-titulo">
-      <div class="hero-right">
+      <picture class="hero-bg">
+        <source media="(max-width: 767px)" srcset="./img/hero-ana-fedel-1600-mobile.jpg" />
         <img src="./img/hero-ana-fedel-1600.jpg" width="1600" height="2133" alt="Retrato da nutricionista Ana Fedel" fetchpriority="high" decoding="async" />
-      </div>
+      </picture>
+      <div class="hero-overlay" aria-hidden="true"></div>
       <div class="hero-left reveal">
         <p class="hero-eyebrow">Nutricionista · Nutrição Clínica</p>
         <p class="hero-trust">Campinas e online · CRN-3 91723</p>
@@ -355,7 +358,8 @@
         <div class="how-card reveal">
           <div class="how-card-num" aria-hidden="true">03</div>
           <h3>Acompanhamento</h3>
-          <p>Ajusto sua estratégia no WhatsApp. No presencial, acompanho com <a href="bioimpedancia-campinas.html">bioimpedância em Campinas</a>.</p>
+          <p>Ajusto sua estratégia no WhatsApp. No presencial, acompanho com bioimpedância em Campinas.</p>
+          <a class="how-card-more" href="bioimpedancia-campinas.html">Saiba mais sobre bioimpedância</a>
         </div>
       </div>
     </section>
@@ -586,12 +590,12 @@
         <div>
           <div class="philosophy-item reveal">
             <span class="section-label">Método</span>
-            <h2 id="titulo-metodo" class="philosophy-title">Ciência clínica na sua rotina.</h2>
-            <p>Cruzo evidência, exames e escuta ativa em cada decisão — sempre com foco no que você consegue manter.</p>
+            <h2 id="titulo-metodo" class="philosophy-title">Nutrição clínica aplicada à sua rotina.</h2>
+            <p>Cada decisão do acompanhamento é feita a partir de evidência científica, avaliação individual, exames quando necessário e uma escuta cuidadosa da sua realidade.</p>
           </div>
           <div class="philosophy-item reveal">
             <h3 class="philosophy-title">Cuidar da saúde pode ser leve.</h3>
-            <p>Sem culpa nem extremos: você aprende a ouvir o corpo e fazer escolhas possíveis no dia a dia.</p>
+            <p>A mudança não precisa vir da culpa, da restrição ou do exagero. Com orientação adequada, você constrói uma relação mais consciente com a comida e uma rotina alimentar possível de manter.</p>
           </div>
         </div>
         <div class="philosophy-imgs reveal">
@@ -716,7 +720,6 @@
           <span>Campinas – SP</span>
         </span>
         <br>
-        <span class="footer-info-line">CRN-3 91723</span>
       </p>
     </div>
     <div class="footer-links">
