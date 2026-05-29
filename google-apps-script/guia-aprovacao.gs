@@ -10,7 +10,7 @@
 const SHEET_NAME = 'Acessos';
 /** Troque pelos valores em google-apps-script/VALORES-GERADOS.txt (gerado localmente) */
 const ADMIN_EMAIL = 'anafedel@anafedel.com';
-const API_SECRET = 'TROQUE_API_SECRET';
+const API_SECRET = 'ana-guia-2026-token';
 const ADMIN_TOKEN = 'TROQUE_ADMIN_TOKEN';
 
 function doGet(e) {

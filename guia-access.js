@@ -1,9 +1,13 @@
 (function () {
+  /** Valores padrão (GitHub Pages). guia-secrets.js pode sobrescrever se preenchido. */
+  const DEFAULTS = {
+    apiUrl: 'https://script.google.com/macros/s/AKfycbxmgzt_XmLveQN75VfKwoTddE618znNqXnJCn74o7lDXonL0nFHNbxMBtSN2QAKDACX/exec',
+    apiToken: 'ana-guia-2026-token',
+  };
+
   const CFG = window.GUIA_SECRETS || {};
-  /** URL do App da Web (Google Apps Script) — ver guia-secrets.js ou google-apps-script/ */
-  const GUIA_API_URL = CFG.apiUrl || '';
-  /** Mesmo valor de API_SECRET no Apps Script */
-  const GUIA_API_TOKEN = CFG.apiToken || '';
+  const GUIA_API_URL = String(CFG.apiUrl || DEFAULTS.apiUrl || '').trim();
+  const GUIA_API_TOKEN = String(CFG.apiToken || DEFAULTS.apiToken || '').trim();
 
   const STORAGE_KEY = 'anafedel_guia_access';
   const STORAGE_TTL_DAYS = 90;
@@ -188,7 +192,7 @@
 
   async function onSubmit(email) {
     if (!apiConfigured()) {
-      showError('Sistema de aprovação ainda não configurado. Entre em contato com a nutricionista.');
+      showError('Não foi possível enviar sua solicitação agora. Tente novamente em instantes.');
       return;
     }
 
@@ -225,7 +229,7 @@
       return;
     }
     if (!apiConfigured()) {
-      showError('Sistema de aprovação ainda não configurado.');
+      showError('Não foi possível verificar agora. Tente novamente em instantes.');
       return;
     }
 
@@ -249,7 +253,7 @@
   function boot() {
     if (!apiConfigured()) {
       showGate();
-      showError('O guia gratuito será liberado após aprovação. Configure a API no site para ativar.');
+      showError('Não foi possível carregar o sistema de aprovação. Tente novamente em instantes ou fale conosco pelo WhatsApp.');
       return;
     }
 

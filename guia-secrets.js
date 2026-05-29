@@ -1,5 +1,5 @@
-/** Configuração local — não commitar (está no .gitignore) */
+/** Opcional: sobrescreve guia-access.js só se apiUrl/apiToken estiverem preenchidos */
 window.GUIA_SECRETS = {
-  apiUrl: '',
-  apiToken: 'KIWXwKP6LrPrFar6YwKqK1pk7HNn-X8FkNp0flXi9Dc',
+  apiUrl: 'https://script.google.com/macros/s/AKfycbxmgzt_XmLveQN75VfKwoTddE618znNqXnJCn74o7lDXonL0nFHNbxMBtSN2QAKDACX/exec',
+  apiToken: 'ana-guia-2026-token',
 };
